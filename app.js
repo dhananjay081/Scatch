@@ -9,6 +9,7 @@ const ownerRouter = require("./routes/ownerRouter")
 const productsRouter = require("./routes/productsRouter")
 const userRouter = require("./routes/userRouter")
 
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
