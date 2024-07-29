@@ -10,7 +10,7 @@ const ownerSchema = mongoose.Schema({
         trim: true,
     },
     email:String,
-    password: Number,
+    password:String,
     products: {
             type: Array,
             default:[]

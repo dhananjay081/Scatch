@@ -5,12 +5,13 @@ const ownerModel = require("../models/owner_model")
 
 
 router.get("/",function(req,res){
-    res.send("hey it's working");
+    res.send("hey it's working owner model");
 });
 
 // console.log(process.env.NODE_ENV); //$env:NODE_ENV="development"; Terminal pr set karoge tab hi aayega nahi to nahi aayega
-
 if(process.env.NODE_ENV === "development"){
+     
+try {
     router.post("/create",async function(req,res){
       let owner = await ownerModel.find()
       if(owner.length>0){
@@ -25,6 +26,13 @@ if(process.env.NODE_ENV === "development"){
       })
       res.status(201).send(createdOwner);
     });
-}
+    }
+   catch (error) {
+     res.send(error.message)
+   }
+  }
+  
+   
+
 
 module.exports = router;
