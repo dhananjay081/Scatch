@@ -22,7 +22,7 @@ module.exports.registerUser = async function (req, res) {
             });
             let token = generaterToken(user)
              res.cookie("token",token)
-             res.send("user created successfully");
+             res.status(200).redirect("/shop");
           }
         });
       });
@@ -49,7 +49,7 @@ module.exports.loginUser = async function(req, res) {
       if (result) {
         let token = generaterToken(user)
         res.cookie("token",token)
-        res.send("you can login")
+        res.redirect("/shop");
 
       } else {
         res.send("password incorrect");
@@ -60,3 +60,8 @@ module.exports.loginUser = async function(req, res) {
     res.status(500).send("Internal server error");
   }
 };
+
+module.exports.logout = function(){
+  res.cookie("token","");
+  res.redirect("/");
+}
